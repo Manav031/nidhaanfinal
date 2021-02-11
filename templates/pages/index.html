@@ -1,0 +1,115 @@
+{% extends 'base2.html' %} {% block title %} | Welcome {% endblock %} {% load static %} {% block content %}
+
+<section class="hero-wrap d-flex" id="home">
+    <div class="forth d-flex">
+        <div class="bg-after d-flex align-self-stretch"></div>
+        <div class="text">
+            <div class="desc pt-5">
+                <span class="subheading">Welcome</span>
+                <h1 class="mb-5">Design That Reflects Your Style</h1>
+                <h2 class="mb-4"></h2>
+                <p><a href="#" class="btn-custom py-3 pr-2">Get in touch</a></p>
+            </div>
+        </div>
+    </div>
+    <div class="third about-img">
+        {% if about %} {% for about in about %}
+        <div id="home" class="video-hero" style="height: 750px; background-image: url('{{ about.main_pic.url }}'); background-size:cover; background-position: center center;">
+            {% endfor %} {% endif %}
+            <!-- <a class="player" data-property="{videoURL:'https://www.youtube.com/watch?v=iia8HIsvqmw&list=PLKTlP51GPmJz_ej9d_4OUAh65PMS8jn2n&index=4',containment:'#home', showControls:false, autoPlay:true, loop:true, mute:true, startAt:0, opacity:1, quality:'default'}"></a> -->
+        </div>
+    </div>
+</section>
+
+<!-- New AboutUs Section-->
+<div class="row justify-content-center mb-5 pb-3" id="about">
+    <div class="col-lg-6 heading-section text-center ftco-animate" style="margin-top: 50px;">
+        <span class="subheading">about</span>
+        <h2 class="mb-4">AboutUs</h2>
+    </div>
+</div>
+<section class="ab" id="about">
+    <div class="cain">
+        {% for i in about %}
+        <div class="ct">
+            <h1>{{i.about_you_title}}</h1>
+            <p>{{ i.about_you_desc }}</p>
+            <p class="read-more"><a href="#" class="button btn btn-primary">Read More</a></p> 
+        </div>
+        <img src="{{ i.about_pic.url }}" alt="AboutPic" class="pic">
+        {% endfor %}
+    </div>
+</section>
+
+<!-- New AboutUs Section-->
+
+<!-- New Projects Section-->
+<div class="row justify-content-center mb-5 pb-3" id="project">
+        <div class="col-lg-6 heading-section text-center ftco-animate" style="margin-top: 50px;">
+            <span class="subheading">Projects</span>
+            <h2 class="mb-4">My Projects</h2>
+        </div>
+    </div>
+<section class="projects">
+    {% for i in project %}
+    <div class="card">
+        <span class="subheading">{{ i.categorie }}</span>
+        <div class="ctitle"><h2>{{i.name}}</h2></div>
+        <img src="{{ i.project_main_photo.url }}" alt="" class="cimg">
+        <div class="pcontent">
+            <p>{{ i.details_main }}</p>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'project' i.categorie %}" class="button btn btn-primary">ReadMore</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<!-- New Projects Section-->
+
+<!-- New contacts Section-->
+<div class="row justify-content-center mb-5 pb-3" id="contact">
+    <div class="col-lg-6 heading-section text-center ftco-animate" style="margin-top: 50px;">
+        <span class="subheading">Contact</span>
+        <h2 class="mb-4">ContactUs</h2>
+        <p></p>
+    </div>
+</div>
+<div class="row block-9" style="padding: 0 100px;">
+    <div class="col-md-6 pr-md-5">
+        <form action="{% url 'contact' %}" method="post" class="php-email-form" id="contact-form" role="form" data-wow-delay="0.8s">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="client_name" id="client_name" placeholder="Your Name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="client_email" id="client_email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required>
+            </div>
+            <div class="form-group">
+                <textarea class="form-control" name="client_message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6 pr-md-5">
+        {% for i in contact_us %}
+            <h1>{{ i.name }}</h1>
+            <p style="color: white;font-size: 20px;">{{ i.address }}</p>
+            <a href="tel:{{i.phone1}}" style="color: white;font-size: 20px;">{{ i.phone1 }}</a> <br \>
+            <a href="mailto:{{i.email}}" style="color: white;font-size: 20px;">{{ i.email }}</a>
+        {% endfor %}
+    </div>
+
+</div>
+</div>
+</section>
+
+<!-- New contacts Section-->
+
+{% endblock %}

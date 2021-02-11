@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block title %} | Projects {% endblock %} {% load static %} {% block content %}
+
+<section class="blog">
+    {% for i in project %}
+    <h1>{{ i.name }}</h1>
+    <p>{{ i.description }}</p>
+    <img src="{{ i.project_photo.url }}" alt="" class="img">
+        {% for j in projimag %}
+            <p>{{ j.des }}</p>
+            <img src="{{ j.images.url }}" alt="" class="img">
+        {% endfor %}
+    {% endfor %}
+     <span>Number of images</span>
+</section>
+
+{% endblock %}

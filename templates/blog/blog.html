@@ -1,0 +1,146 @@
+{% extends 'base.html' %} {% block title %} | {{ project.name }} {% endblock %} {% load static %} {% block content %}
+
+
+<!-- .section -->
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 ftco-animate">
+                <h2 class="mb-3">{{ project.name }}</h2>
+                <h4>{{ project.categorie }}
+                </h4>
+                <p>
+                    <img src="{{ project.project_main_photo.url }}" alt="" class="img-fluid">
+                </p>
+                <p>{{ project.details_main }}</p>
+                <p>{{ project.detail_2 }}</p>
+                {% if project.product_design_photo %}
+                <h2 class="mb-3 mt-5">Interior Accessories</h2>
+                {% endif %}
+                <p>
+
+                    <div class="row mb-5 thumbs">
+                        {% if project.product_design_photo %}
+                        <div class="col-md-2">
+                            <a href="{{ project.product_design_photo.url }}" data-lightbox="home-images">
+                                <img src="{{ project.product_design_photo.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.design_photo2 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.design_photo2.url }}" data-lightbox="home-images">
+                                <img src="{{ project.design_photo2.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.current_design_photo_3 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.current_design_photo_3.url }}" data-lightbox="home-images">
+                                <img src="{{ project.current_design_photo_3.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.current_design_photo_4 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.current_design_photo_4.url }}" data-lightbox="home-images">
+                                <img src="{{ project.current_design_photo_4.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.current_design_photo_5 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.current_design_photo_5.url }}" data-lightbox="home-images">
+                                <img src="{{ project.current_design_photo_5.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </p>
+                <p>{{ project.product_design }}</p>
+                <p>{{ project.design_detail_1 }}</p>
+                <p>{{ project.design_detail_2 }}</p>
+
+
+                {% if project.final_photo_1 %}
+                <h2 class="mb-3 mt-5">Gallery</h2>
+                {% endif %}
+                <p>
+
+                    <div class="row mb-5 thumbs">
+                        {% if project.final_photo_1 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.final_photo_1.url }}" data-lightbox="current-images">
+                                <img src="{{ project.final_photo_1.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.final_photo_2 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.final_photo_2.url }}" data-lightbox="current-images">
+                                <img src="{{ project.final_photo_2.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.final_photo_3 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.final_photo_3.url }}" data-lightbox="current-images">
+                                <img src="{{ project.final_photo_3.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.final_photo_4 %}
+                        <div class="col-md-2">
+                            <a href="{{ project.final_photo_4.url }}" data-lightbox="current-images">
+                                <img src="{{ project.final_photo_4.url }}" alt="" class="img-fluid">
+                            </a>
+                        </div>
+                        {% endif %} {% if project.final_photo_5 %}
+                    </div>
+                    <div class="col-md-2">
+                        <a href="{{ project.final_photo_5.url }}" data-lightbox="current-images">
+                            <img src="{{ project.final_photo_5.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endif %}
+                </p>
+                <div class="row mb-3 mt-5">
+                    {% if project.final_photo_6 %}
+                    <div class="col-md-2">
+                        <a href="{{ project.final_photo_6.url }}" data-lightbox="current-images">
+                            <img src="{{ project.final_photo_6.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endif %} {% if project.final_photo_7 %}
+                    <div class="col-md-2">
+                        <a href="{{ project.final_photo_7.url }}" data-lightbox="current-images">
+                            <img src="{{ project.final_photo_7.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endif %} {% if project.final_photo_8 %}
+                    <div class="col-md-2">
+                        <a href="{{ project.final_photo_8.url }}" data-lightbox="current-images">
+                            <img src="{{ project.final_photo_8.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endif %} {% if project.final_photo_9 %}
+                    <div class="col-md-2">
+                        <a href="{{ project.final_photo_9.url }}" data-lightbox="current-images">
+                            <img src="{{ project.final_photo_9.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endif %} {% if project.final_photo_10 %}
+                    <div class="col-md-2">
+                        <a href="{{ project.final_photo_10.url }}" data-lightbox="current-images">
+                            <img src="{{ project.final_photo_10.url }}" alt="" class="img-fluid">
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+                <p>{{ project.design_detail_3 }}</p>
+                <p>{{ project.design_detail_4 }}</p>
+
+            </div>
+            <!-- .col-md-8 -->
+
+
+            <!-- END COL -->
+
+        </div>
+    </div>
+</section>
+<!-- .section -->
+{% endblock %}

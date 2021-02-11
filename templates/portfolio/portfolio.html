@@ -1,0 +1,49 @@
+{% extends 'base.html' %} {% block title %} | Portfolio {% endblock %} {% load static %} {% block content %}
+
+
+<section class="hero-wrap hero-wrap-2 d-flex" style="background-image: url({% static 'images/bg_2.jpeg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-sm-12 ftco-animate text-bread d-flex align-items-center">
+                <div class="text">
+                    <h1 class="mb-3 mt-5 bread">Portfolio</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Designs</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section ftco-project" id="projects-section">
+    <div class="container-fluid px-4">
+        <div class="row justify-content-center mb-5 pb-3">
+            <div class="col-lg-6 heading-section text-center ftco-animate">
+                <span class="subheading">Projects</span>
+                <h2 class="mb-4">Designs</h2>
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+            {% if portfolio %} {% for portfolio in portfolio %}
+
+            <div class="col-md-4">
+                <div class="project img ftco-animate d-flex justify-content-center align-items-center" style="background-image: url({{ portfolio.project_main_photo.url }});">
+                    <div class="overlay"></div>
+                    <a href="{% url 'project' portfolio.id %}" class="btn-site d-flex align-items-center justify-content-center"><span class="icon-subdirectory_arrow_right"></span></a>
+                    <div class="text text-center p-4">
+                        <h3><a href="{% url 'project' portfolio.id %}">{{ portfolio.name }}</a></h3>
+                        <span>{{ portfolio.categorie }}</span>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %} {% else %}
+            <h2>No Projects To Display</h2>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %} {% block title %} | Projects Design {% endblock %} {% load static %} {% block content %}
+
+<section class="hero-wrap hero-wrap-2 d-flex" style="background-image: url({% static 'images/bg_2.jpeg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-sm-12 ftco-animate text-bread d-flex align-items-center">
+                <div class="text">
+                    <h1 class="mb-3 mt-5 bread">Project Design</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Project Design</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 ftco-animate">
+                <div class="row">
+                    {% if project %} {% for project in project %}
+                    <div class="col-md-6 ftco-animate">
+                        <div class="blog-entry">
+                            <a href="{% url 'blog' project.id %}" class="block-20" style="background-image: url({{ project.project_main_photo.url }});">
+                            </a>
+                            <div class="text py-4">
+                                <div class="meta mb-3">
+                                    <div><a href="{% url 'blog' project.id %}" style="color: gray;"> {{ project.project_date }} </a></div>
+                                    <div><a href="#">{{ project.categorie }}</a></div>
+
+                                </div>
+                                <div class="desc">
+                                    <h3 class="heading"><a href="{% url 'blog' project.id %}">{{ project.name }}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %} {% else %}
+                    <h3>Nothing to Display</h3>
+                    {% endif %}
+
+                </div>
+            </div>
+            <!-- .col-md-8 -->
+            <div class="col-lg-4 sidebar ftco-animate">
+                <div class="sidebar-box">
+                    <form action="{% url 'search' %}" class="search-form">
+                        <div class="form-group">
+                            <<<<<<< HEAD <span class="icon icon-search" style="color: #000;">
+                                </span>
+                                =======
+                                <span class="icon icon-search" style="color: #000000;"></span> >>>>>>> ba6fd11... Done
+                                <input type="text" name="keywords" class="form-control" placeholder="Type a keyword and hit enter" value="{{ values.keywords }}">
+                        </div>
+                    </form>
+                </div>
+
+                <div class="sidebar-box ftco-animate">
+                    <h3>Current Sites</h3>
+                    <div class="block-21 mb-4 d-flex">
+                        {% if currentSite %} {% for currentSite in currentSite|slice:":5" %}
+                        <a class="blog-img mr-4" style="background-image: url({{ currentSite.current_main_photo.url }});"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="{% url 'cs' currentSite.id %}">{{ currentSite.current_site_name }}</a></h3>
+                            <div class="meta">
+                                <div><a href="{% url 'cs' currentSite.id %}"><span class="icon-calendar"></span> {{ currentSite.current_project_date }} </a></div>
+                            </div>
+                        </div>
+                        {% endfor %} {% else %}
+                        <h5>No Current Sites At This Movement</h5>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <!-- END COL -->
+
+        </div>
+    </div>
+</section>
+<!-- .section -->
+
+{% endblock %}

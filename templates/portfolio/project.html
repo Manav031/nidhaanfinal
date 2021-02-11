@@ -1,0 +1,20 @@
+{% extends 'base.html' %} {% block title %} | Projects {% endblock %} {% load static %} {% block content %}
+
+<!-- .section -->
+<section class="projects">
+    {% for i in project %}
+    <div class="card">
+        <div class="ctitle"><h2>{{i.name}}</h2></div>
+        <img src="{{ i.project_photo.url }}" alt="" class="cimg">
+        <div class="pcontent">
+            <p>{{ i.description }}</p>
+        </div>
+        <div class="button-container">
+            <a href="{% url 'projectmain' i.id %}" class="button">ReadMore</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+<!-- .section -->
+
+{% endblock %}

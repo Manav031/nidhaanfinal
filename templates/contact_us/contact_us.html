@@ -1,0 +1,75 @@
+{% extends 'base.html' %} {% block title %} | Contact Us {% endblock %} {% load static %} {% block content %}
+
+<section class="hero-wrap hero-wrap-2 d-flex" style="background-image: url({% static 'images/bg_2.jpeg' %});">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-7 col-sm-12 ftco-animate text-bread d-flex align-items-center">
+                <div class="text">
+                    <h1 class="mb-3 mt-5 bread">Contact Us</h1>
+                    <p class="breadcrumbs"><span class="mr-2"><a href="{% url 'index' %}">Home</a></span> <span>Contact Us</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="ftco-section contact-section">
+    <div class="container">
+        <div class="row d-flex mb-5 contact-info">
+            <div class="col-md-12 mb-4">
+                <h2 class="heading">Contact Information</h2>
+            </div>
+            <div class="w-100"></div>
+            {% if contact_us %} {% for contact_us in contact_us|slice:":1" %} {% if contact_us.address %}
+            <div class="col-md-3 d-flex">
+                <div class="con align-self-stretch p-4">
+                    <p><span>Address:</span>{{ contact_us.address }} </p>
+                </div>
+            </div>
+            {% endif %} {% if contact_us.phone1 %}
+            <div class="col-md-3 d-flex">
+                <div class="con align-self-stretch p-4">
+                    <p><span>Phone:</span> <a href="{{ contact_us.whatsapp_link }}">{{ contact_us.phone1 }}</a></p>
+                </div>
+            </div>
+            {% endif %} {% if contact_us.email %}
+            <div class="col-md-3 d-flex">
+                <div class="con align-self-stretch p-4">
+                    <p><span>Email:</span> <a href="{{ contact_us.email_link }}">{{ contact_us.email }}</a></p>
+                </div>
+            </div>
+            {% endif %} {% endfor %} {% else %} No Contact-Info {% endif %}
+        </div>
+
+
+
+        <div class="row block-9">
+            <div class="col-md-6 pr-md-5">
+                <form action="{% url 'contact' %}" method="post" class="php-email-form" id="contact-form" role="form" data-wow-delay="0.8s">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="client_name" id="client_name" placeholder="Your Name" data-rule="minlen:3" data-msg="Please enter at least 3 chars" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="client_email" id="client_email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" name="client_message" rows="10" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Send Message" class="btn btn-primary py-3 px-5">
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+{% endblock %}
